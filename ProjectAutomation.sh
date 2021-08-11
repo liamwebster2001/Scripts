@@ -27,14 +27,17 @@ git commit -m 'initial commit -setup with .sh script'
 
 
 # step 5 use github API to log the user in
-curl -u liamwebster2001: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 -d "{\"name\": \"${REPO_NAME}\", \"description\": \"${DESCRIPTION}\"}" https://api.github.com/user/repos
+#curl -u liamwebsterreal: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 -d "{\"name\": \"${REPO_NAME}\", \"description\": \"${DESCRIPTION}\"}" https://api.github.com/user/repos
+
+curl -H "Authorization: token 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" -d "{\"name\": \"${REPO_NAME}\", \"description\": \"${DESCRIPTION}\"}" https://api.github.com/user/repos
+
 
 #  step 6 add the remote github repo to local repo and push
-git remote add origin https://github.com/liamwebster2001/${REPO_NAME}.git
+git remote add origin https://github.com/liamwebsterreal/${REPO_NAME}.git
 git push --set-upstream origin master
 
 # step 7 change to your project's root directory.
 cd "$PROJECT_PATH"
 
-echo "Done. Go to https://github.com/$USERNAME/$REPO_NAME to see." 
+echo "Done. Go to https://github.com/liamwebsterreal/$REPO_NAME to see." 
 echo " *** You're now in your project root. ***"
