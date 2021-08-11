@@ -1,5 +1,6 @@
 # Make executable with chmod +x <<filename.sh>>
 
+#token = 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
 CURRENTDIR=${pwd}
 
 cd
@@ -28,8 +29,16 @@ git add README.MD
 git commit -m 'initial commit -setup with .sh script'
 
 
+curl \
+  -X POST \
+  -H "Authorization: token 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" \
+  https://api.github.com/user/repos \
+  -d '{"name":"'"$REPO_NAME"'"}'
+
 # step 5 use github API to log the user in
 #curl -u liamwebsterreal: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 -d "{\"name\": \"${REPO_NAME}\", \"description\": \"${DESCRIPTION}\"}" https://api.github.com/user/repos
+#curl -H "Authorization: token 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" --data '{"name":'$REPO_NAME'}' https://api.github.com/user/repos
+
 
 #  step 6 add the remote github repo to local repo and push
 git remote add origin git@github.com:liamwebsterreal/${REPO_NAME}.git
