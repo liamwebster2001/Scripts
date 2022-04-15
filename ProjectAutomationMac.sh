@@ -27,14 +27,11 @@ touch README.MD
 git add README.MD
 git commit -m 'initial commit -setup with .sh script'
 
-
-curl --s \
+curl \
   -X POST \
-  -H "Authorization: token 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" \
+  -H "Accept: application/vnd.github.v3+json" \
   https://api.github.com/user/repos \
-  -d '{"name":"'"$REPO_NAME"'"}'
-  
-
+  -d '{"name":"name"}'
 
 #  step 6 add the remote github repo to local repo and push
 git remote add origin git@github.com:liamwebsterreal/$REPO_NAME.git
