@@ -11,27 +11,23 @@ read REPO_NAME
 echo "Enter a repo description: "
 read DESCRIPTION
 
-echo "Enter a folder name: "
-read FOLDER_NAME
-
 PROJ_PATH="/Users/liamwebster/Documents/Projects"
 cd "$PROJ_PATH"
-mkdir $FOLDER_NAME
+mkdir $REPO_NAME
 
-PROJECT_PATH="/Users/liamwebster/Documents/Projects/$FOLDER_NAME"
+PROJECT_PATH="/Users/liamwebster/Documents/Projects/$REPO_NAME"
 cd "$PROJECT_PATH"
 
 # step 4: initialise the repo locally, create blank README, add and commit
 git init
 touch README.MD
+touch .gitignore
 git add README.MD
-git commit -m 'initial commit -setup with .sh script'
+git add .gitignore
+git commit -m 'Initial Commit: add README.MD and .gitignore'
 
-curl \
-  -X POST \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/user/repos \
-  -d '{"name":"name"}'
+curl -H 'Authorization: [token_here]' https://api.github.com/user/repos -d --silent '{"name":"'$REPO_NAME'","description":"'$DESCRIPTION'"}'
+
 
 #  step 6 add the remote github repo to local repo and push
 git remote add origin git@github.com:liamwebsterreal/$REPO_NAME.git
