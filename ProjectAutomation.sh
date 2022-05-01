@@ -31,7 +31,7 @@ git commit -m 'initial commit -setup with .sh script'
 
 curl \
   -X POST \
-  -H "Authorization: token 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" \
+  -H "Authorization: token [TOKEN_HERE]" \
   https://api.github.com/user/repos \
   -d '{"name":"'"$REPO_NAME"'"}'
 
